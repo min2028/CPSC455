@@ -1,13 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Inventory</title>
-    <link rel="stylesheet" href="style.css">
-    <script type="text/javascript" src="app.js"></script>
-</head>
-<body onload="renderNav()">
-    <div class="main_container">
-    </div>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>BoxIt</title>
+        <meta content="width=device-width, initial-scale=1" name="viewport"/>
+        <link rel="stylesheet" href="style.css">
+        <script type="text/javascript" src="app.js"></script>
+    </head>
+    <body onload="renderNav()">
+        <div class="main_container">
+            <div class="inventory_container">
+                <div class="input_container">
+                    <h1>Welcome to the BoxIt!</h1>
+                    <h3>Please fill in the form below.</h3>
+                    <div class="form_container">
+                        <form onsubmit="addToInventory()">
+                            <label for="name">Name:</label>
+                            <input type="text" id="name" name="name" required>
+
+                            <label for="description">Description:</label>
+                            <textarea id="description" name="description" rows="10" cols="40" required>
+                                </textarea>
+
+                            <label for="price">Price:</label>
+                            <input type="text" id="price" name="email" required>
+
+                            <label for="image">Image (url):</label>
+                            <input type="text" id="image" name="image" required>
+
+                            <input type="submit" value="Store">
+                        </form>
+                    </div>
+                </div>
+
+
+                <div id="overlay"></div>
+
+            </div>
+        </div>
+    </body>
 </html>
