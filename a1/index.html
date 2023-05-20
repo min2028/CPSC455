@@ -2,41 +2,39 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>BoxIt</title>
+        <title>StoreIt</title>
         <meta content="width=device-width, initial-scale=1" name="viewport"/>
         <link rel="stylesheet" href="style.css">
-        <script type="text/javascript" src="app.js"></script>
     </head>
     <body onload="renderNav()">
         <div class="main_container">
             <div class="inventory_container">
                 <div class="input_container">
-                    <h1>Welcome to the BoxIt!</h1>
+                    <h1>Welcome to the StoreIt!</h1>
                     <h3>Please fill in the form below.</h3>
                     <div class="form_container">
-                        <form onsubmit="addToInventory()">
-                            <label for="name">Name:</label>
-                            <input type="text" id="name" name="name" required>
+                        <form id="item_form" onsubmit="return addToInventory()">
+                            <input type="text" id="name" placeholder="Name" required>
 
-                            <label for="description">Description:</label>
-                            <textarea id="description" name="description" rows="10" cols="40" required>
-                                </textarea>
+                            <textarea id="description" rows="10" placeholder="Description" required></textarea>
 
-                            <label for="price">Price:</label>
-                            <input type="text" id="price" name="email" required>
+                            <input type="number" id="price" placeholder="$" required>
 
-                            <label for="image">Image (url):</label>
-                            <input type="text" id="image" name="image" required>
+                            <input type="text" id="image" placeholder="Image (url)" required>
 
-                            <input type="submit" value="Store">
+                            <input type="submit" id="store_button" value="Store">
+                            <button type="reset" id="clear_button">Clear</button>
+                            <button type="button" id="clean_button" onclick="cleanStorage()">Clean Storage</button>
                         </form>
                     </div>
+
+                    <div id="items_container">
+                        <h2>Stored Items</h2>
+                        <ul id="item_list"></ul>
+                    </div>
                 </div>
-
-
-                <div id="overlay"></div>
-
             </div>
         </div>
+        <script type="text/javascript" src="app.js"></script>
     </body>
 </html>

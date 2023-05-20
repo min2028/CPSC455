@@ -28,7 +28,7 @@ function renderNav() {
     const aInventory = document.createElement('a');
     aInventory.id = 'nav_inventory';
     aInventory.href = 'index.html';
-    aInventory.textContent = 'BoxIt';
+    aInventory.textContent = 'StoreIt';
     h2Brand.appendChild(aInventory);
 
     nav.appendChild(ul);
@@ -53,6 +53,81 @@ function renderNav() {
     // </nav>
 }
 
+window.addEventListener("load", displayInventory);
+
+let items = [];
+
+// https://m.media-amazon.com/images/I/41e30GpzsNL._AC_.jpg
+// https://m.media-amazon.com/images/I/61PoKJpmxPL._AC_SX679_.jpg
+
+const initialItem =
+    '{"name":"Aung Da Grape",' +
+    '"description":"Developer",' +
+    '"price":9999999,' +
+    '"image":"https://m.media-amazon.com/images/I/51tYXyD5NHL._AC_.jpg"}';
+
+items.push(JSON.parse(initialItem));
+
+const itemNameInput = document.getElementById('name');
+const itemDescriptionInput = document.getElementById('description');
+const itemPriceInput = document.getElementById('price');
+const itemImageInput = document.getElementById('image');
+const itemForm = document.getElementById('item_form');
+
 function addToInventory() {
 
+    let itemName = itemNameInput.value;
+    let itemDescription = itemDescriptionInput.value;
+    let itemPrice = itemPriceInput.value;
+    let itemImage = itemImageInput.value;
+
+    if (!itemName || !itemDescription || !itemPrice || !itemImage) {
+        alert('Please fill in all the required fields.');
+        return false;
+    }
+
+    let item = {
+        name: itemName,
+        description: itemDescription,
+        price: itemPrice,
+        image: itemImage,
+    };
+    items.push(item);
+    itemForm.reset();
+    displayInventory();
+
+    return false;
+}
+
+function displayInventory() {
+    const itemList = document.getElementById('item_list');
+    itemList.innerHTML = '';
+
+    items.forEach((item) => {
+        const itemCard = document.createElement('li');
+        itemCard.classList.add('item-card');
+
+        const image = document.createElement('img');
+        image.src = item.image;
+        itemCard.appendChild(image);
+
+        const name = document.createElement('h3');
+        name.textContent = item.name;
+        itemCard.appendChild(name);
+
+        const description = document.createElement('p');
+        description.textContent = item.description;
+        itemCard.appendChild(description);
+
+        const price = document.createElement('p');
+        price.textContent = 'Price: $' + item.price;
+        itemCard.appendChild(price);
+
+        itemList.appendChild(itemCard);
+    });
+}
+
+function cleanStorage() {
+    items = [];
+    displayInventory();
 }
