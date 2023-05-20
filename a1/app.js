@@ -112,7 +112,7 @@ function displayInventory() {
         itemCard.appendChild(image);
 
         const cardContent = document.createElement('div');
-        itemCard.classList.add('card_content');
+        cardContent.classList.add('card_content');
 
         const name = document.createElement('h2');
         name.textContent = item.name;
