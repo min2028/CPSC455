@@ -101,9 +101,19 @@ function addToInventory() {
 
 function displayInventory() {
     const itemList = document.getElementById('cards_container');
+    const emptyContainer = document.querySelector('.empty');
+
+    if (!items.length) {
+        const emptyStorage = document.createElement('h2')
+        emptyStorage.textContent = 'The storage is empty!';
+        emptyStorage.classList.add('empty_storage');
+        emptyContainer.innerHTML='';
+        emptyContainer.appendChild(emptyStorage);
+    }
     itemList.innerHTML = '';
 
     items.forEach((item) => {
+
         const itemCard = document.createElement('li');
         itemCard.classList.add('card');
 
