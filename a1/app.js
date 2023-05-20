@@ -100,29 +100,33 @@ function addToInventory() {
 }
 
 function displayInventory() {
-    const itemList = document.getElementById('item_list');
+    const itemList = document.getElementById('cards_container');
     itemList.innerHTML = '';
 
     items.forEach((item) => {
         const itemCard = document.createElement('li');
-        itemCard.classList.add('item-card');
+        itemCard.classList.add('card');
 
         const image = document.createElement('img');
         image.src = item.image;
         itemCard.appendChild(image);
 
-        const name = document.createElement('h3');
+        const cardContent = document.createElement('div');
+        itemCard.classList.add('card_content');
+
+        const name = document.createElement('h2');
         name.textContent = item.name;
-        itemCard.appendChild(name);
+        cardContent.appendChild(name);
 
         const description = document.createElement('p');
         description.textContent = item.description;
-        itemCard.appendChild(description);
+        cardContent.appendChild(description);
 
         const price = document.createElement('p');
         price.textContent = 'Price: $' + item.price;
-        itemCard.appendChild(price);
+        cardContent.appendChild(price);
 
+        itemCard.appendChild(cardContent);
         itemList.appendChild(itemCard);
     });
 }

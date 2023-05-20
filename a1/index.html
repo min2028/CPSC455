@@ -9,30 +9,31 @@
     <body onload="renderNav()">
         <div class="main_container">
             <div class="inventory_container">
-                <div class="input_container">
+                <section class="input_container">
                     <h1>Welcome to the StoreIt!</h1>
                     <h3>Please fill in the form below.</h3>
                     <div class="form_container">
                         <form id="item_form" onsubmit="return addToInventory()">
-                            <input type="text" id="name" placeholder="Name" required>
+                            <input type="text" id="name" placeholder="Name (Required)" required>
 
-                            <textarea id="description" rows="10" placeholder="Description" required></textarea>
+                            <textarea id="description" rows="10" placeholder="Description (Required)" required></textarea>
 
-                            <input type="number" id="price" placeholder="$" required>
+                            <input type="number" id="price" placeholder="$ (Required)" required>
 
-                            <input type="text" id="image" placeholder="Image (url)" required>
+                            <input type="text" id="image" placeholder="Image URL (Required)" required>
 
                             <input type="submit" id="store_button" value="Store">
-                            <button type="reset" id="clear_button">Clear</button>
+                            <button type="reset" id="clear_button">Clear Form</button>
                             <button type="button" id="clean_button" onclick="cleanStorage()">Clean Storage</button>
                         </form>
                     </div>
+                </section>
+                <section class="input_container">
+                    <h1>Storage</h1>
+                    <ul id="cards_container">
 
-                    <div id="items_container">
-                        <h2>Stored Items</h2>
-                        <ul id="item_list"></ul>
-                    </div>
-                </div>
+                    </ul>
+                </section>
             </div>
         </div>
         <script type="text/javascript" src="app.js"></script>
