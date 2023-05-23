@@ -59,6 +59,8 @@ let items = [];
 
 // https://m.media-amazon.com/images/I/41e30GpzsNL._AC_.jpg
 // https://m.media-amazon.com/images/I/61PoKJpmxPL._AC_SX679_.jpg
+// https://m.media-amazon.com/images/I/41wJ0GVkTSL._AC_SX679_.jpg
+
 
 const initialItem =
     '{"name":"Aung Da Grape",' +
@@ -112,36 +114,49 @@ function displayInventory() {
     }
     itemList.innerHTML = '';
 
-    items.forEach((item) => {
-
-        const itemCard = document.createElement('li');
-        itemCard.classList.add('card');
-
-        const image = document.createElement('img');
-        image.src = item.image;
-        itemCard.appendChild(image);
-
-        const cardContent = document.createElement('div');
-        cardContent.classList.add('card_content');
-
-        const name = document.createElement('h2');
-        name.textContent = item.name;
-        cardContent.appendChild(name);
-
-        const description = document.createElement('p');
-        description.textContent = item.description;
-        cardContent.appendChild(description);
-
-        const price = document.createElement('p');
-        price.textContent = 'Price: $' + item.price;
-        cardContent.appendChild(price);
-
-        itemCard.appendChild(cardContent);
+    items.forEach((item, index) => {
+        let itemCard = createItemCard(item, index);
         itemList.appendChild(itemCard);
     });
 }
+function createItemCard(item, index) {
+    const itemCard = document.createElement('li');
+    itemCard.classList.add('card');
 
+    const image = document.createElement('img');
+    image.src = item.image;
+    itemCard.appendChild(image);
+
+    const cardContent = document.createElement('div');
+    cardContent.classList.add('card_content');
+
+    const name = document.createElement('h2');
+    name.textContent = item.name;
+    cardContent.appendChild(name);
+
+    const description = document.createElement('p');
+    description.textContent = item.description;
+    cardContent.appendChild(description);
+
+    const price = document.createElement('p');
+    price.textContent = 'Price: $' + item.price;
+    cardContent.appendChild(price);
+
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = 'Remove';
+    deleteButton.addEventListener('click', () => {
+        removeFromInventory(index);
+    });
+    itemCard.appendChild(cardContent);
+    itemCard.appendChild(deleteButton);
+    return itemCard;
+}
 function cleanStorage() {
     items = [];
+    displayInventory();
+}
+
+function removeFromInventory(index) {
+    items.splice(index, 1);
     displayInventory();
 }
