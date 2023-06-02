@@ -1,0 +1,18 @@
+:root {
+    --main-color: #897acc;
+    --main-color-gradient: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+    --bg-color: #f8f5f8;
+    --font-color: #4158D0;
+    --font-color-light: #ece3f8;
+}
+
+/*background-color: #4158D0;
+background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+*/
+
+body {
+    margin: 0;
+    font-family: Monaco, monospace;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
