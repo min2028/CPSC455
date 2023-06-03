@@ -6,19 +6,24 @@ import {useDispatch} from "react-redux";
 export default function CardItem(props) {
 
     const dispatch = useDispatch();
-    function removeItemFromInventory(index) {
+    function removeItemFromInventory(index, event) {
         console.log("Removing item from inventory: ", index);
+        event.stopPropagation();
         dispatch(removeItem(index));
+    }
+
+    const handleCardItemPopUp = () => {
+        props.onClick(props.item);
     }
 
     return (
         <>
-            <li className="card">
+            <li className="card" onClick={handleCardItemPopUp}>
                 <img src={props.item.image} alt={"A DOG"}/>
 
                 <div className="card_content">
                     <h2>{props.item.name}</h2>
-                    <button onClick={() => removeItemFromInventory(props.index)}>Remove</button>
+                    <button onClick={(event) => removeItemFromInventory(props.index, event)}>Remove</button>
                 </div>
             </li>
         </>

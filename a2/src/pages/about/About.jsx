@@ -1,5 +1,7 @@
 import "./about.css";
 import React from "react";
+import meImage from "../../resources/me.jpg";
+import inventoryImage from "../../resources/inven.jpeg";
 
 export default function About() {
     return (
@@ -7,7 +9,7 @@ export default function About() {
             <div className="about_container">
                 <div className="about_me">
                     <h1>About Me</h1>
-                    <img className="me" src="../../../public/me.jpg" alt="me"/>
+                    <img className="me" src={meImage} alt="me"/>
                         <p>Hello there! I'm thrilled to welcome you to my corner of the web. My name
                             is <strong>Aung</strong>, and I'm a passionate student web developer. I find immense joy in
                             crafting captivating websites that not only look visually stunning but also provide seamless
@@ -59,7 +61,7 @@ export default function About() {
                 <br/>
                     <div className="about_inventory">
                         <h1>About This Project</h1>
-                        <img className="inventory" src="../../../public/inven.jpeg" alt="e-inventory picture"/>
+                        <img className="inventory" src={inventoryImage} alt="e-inventory"/>
                             <p>Inventory is a simple web application that allows you to keep track of your inventory.
                                 You can add and delete items from your inventory.</p>
                             <p>Inventory is built using HTML, CSS, and JavaScript. It uses the <a

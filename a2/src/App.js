@@ -1,16 +1,18 @@
 import NavBar from './components/navbar/NavBar';
-import Form from "./components/form/Form";
-import Inventory from "./components/inventory/Inventory";
+import Home from './pages/home';
+import About from "./pages/about/About";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React from "react";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-          <NavBar />
-          <Form />
-          <Inventory />
-      </header>
-    </div>
+    <Router>
+        <NavBar />
+        <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/about' element={<About />} />
+        </Routes>
+    </Router>
   );
 }
 

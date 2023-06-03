@@ -1,5 +1,5 @@
 .navbar {
-    background: var(--main-color-gradient);
+    background: var(--main-color-dark);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -24,24 +24,23 @@ a {
 .nav_item a {
     font-size: 15px;
     color: white;
+    font-weight: bolder;
 }
 
 #nav_about {
     margin-left: 1.5em;
 }
 
-.nav_item a:hover {
-    color: var(--font-color);
-}
-
 #nav_inventory {
-    color: var(--font-color);
+    color: var(--font-color-light);
     font-size: 25px;
 }
 
-#nav_inventory:hover {
-    color: var(--font-color-light);
+#nav_inventory:hover,
+.nav_item a:hover {
+    color: var(--font-color-hover);
 }
+
 
 @media screen and (max-width: 480px) {
 

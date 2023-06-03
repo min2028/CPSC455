@@ -1,0 +1,27 @@
+
+/* About Page */
+.about_container {
+    padding: 2em;
+    overflow:auto;
+    color: var(--font-color-light);
+}
+
+.about_container h1 {
+    display: inline;
+}
+
+.about_container img {
+    width: 35%;
+    height: auto;
+    border-radius: 2.5rem;
+}
+
+.me {
+    float: left;
+    margin: 0 1em 1em 0;
+}
+
+.inventory {
+    float: right;
+    margin: 0 0 1em 1em;
+}

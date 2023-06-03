@@ -5,12 +5,12 @@
     text-align: center;
     flex-direction: column;
     padding: 2em;
-    color: var(--font-color);
+    color: var(--font-color-light);
 }
 
 /* form */
 .form_container {
-    background: var(--main-color-gradient);
+    background: var(--main-color-dark);
     text-align: left;
     border-radius: 2.5rem;
     padding: 2em;
@@ -25,7 +25,8 @@ form input {
     font-size: 15px;
     padding: 8px;
     border: none;
-    width: calc(100% - 16px); /* Adjusted width */
+    width: calc(100% - 16px);
+    background: var(--font-color-hover);
 }
 
 button,
@@ -36,7 +37,7 @@ form textarea {
     margin: 7px 0;
     border-radius: 7px;
     font-size: 15px;
-    color: var(--font-color);
+    color: var(--font-color-light);
     padding: 8px;
     border: none;
     width: calc(100% - 16px);
@@ -46,21 +47,23 @@ form textarea {
 form textarea {
     color: black;
     font-weight: normal;
+    background: var(--font-color-hover);
 }
 
 #clean_button,
 #clear_button,
 #store_button {
-    background: #ddd5fc;
+    background: var(--main-color-dark);
     width: 100%;
+    border: white 1px solid;
 }
 
 #clean_button:hover,
 #clear_button:hover,
 #store_button:hover {
-    border: 2px solid #ddd5fc;
-    background: #8d77ce;
-    color: #ddd5fc;
+    border: 2px solid var(--font-color-hover);
+    background: var(--bg-color);
+    color: var(--font-color-hover);
 }
 
 
