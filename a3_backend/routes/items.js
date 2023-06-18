@@ -1,16 +1,49 @@
 var express = require('express');
 var router = express.Router();
+const { faker } = require('@faker-js/faker');
 
-const initialItems = [
-    { name: "Aung Da Grape", description: "This is a Grape", price: 1000, image: "https://m.media-amazon.com/images/I/41e30GpzsNL._AC_.jpg" },
-    { name: "Aung Da Potato", description: "This is a Potato", price: 500, image: "https://m.media-amazon.com/images/I/61PoKJpmxPL._AC_SX679_.jpg" },
-];
+let itemsList= {
+    items: []
+};
+const createItems = (n) => {
+    while (n > 0) {
+        const item = {
+            uuid: faker.string.uuid(),
+            name: faker.commerce.productName(),
+            price: faker.commerce.price(),
+            description: faker.commerce.productDescription(),
+            image: faker.image.url()
+        }
+        console.log(item)
+        itemsList.items.push(item);
+        n--
+    }
+}
 
-
+createItems(10);
 
 /* GET items listing. */
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+    res.send(itemsList);
+});
+
+router.post('/', function(req, res, next) {
+    // console.log(req.body)
+    const item = {
+        uuid: faker.string.uuid(),
+        name: req.body.name,
+        price: req.body.price,
+        description: req.body.description,
+        image: req.body.image
+    }
+    itemsList.items.push(item);
+    res.send(item);
+});
+
+router.delete('/:id', function(req, res, next) {
+    console.log(req.params.id)
+    itemsList.items = itemsList.items.filter(item => item.uuid !== req.params.id)
+    res.send(itemsList);
 });
 
 module.exports = router;

@@ -1,10 +1,11 @@
 import React from 'react';
 import "./form.css"
 import {useDispatch} from "react-redux";
-import {addItems, cleanItems} from "../../actions/inventory";
+import {addItemAsync} from "../../reducers/thunks";
 
 
-export default function Form() {
+
+export default function Form({item}) {
 
     const dispatch = useDispatch();
 
@@ -16,17 +17,14 @@ export default function Form() {
         const image = document.getElementById("image").value;
         const item = {
             name: name,
-            description: description,
             price: price,
+            description: description,
             image: image
         }
-        dispatch(addItems(item));
         document.getElementById("item_form").reset();
+        dispatch(addItemAsync(item));
     }
 
-    function cleanStorage() {
-        dispatch(cleanItems());
-    }
 
     return (
         <>
@@ -41,8 +39,6 @@ export default function Form() {
                         <input type="text" id="image" placeholder="Image URL (Required)" required />
                         <button type="submit" id="store_button"> Store </button>
                         <button type="reset" id="clear_button">Clear Form</button>
-                        <button type="button" id="clean_button" onClick={cleanStorage}>Clean Storage
-                        </button>
                     </form>
                 </div>
             </section>

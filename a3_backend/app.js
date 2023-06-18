@@ -2,14 +2,18 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const cors = require('cors');
+var bodyParser = require('body-parser')
 
 var indexRouter = require('./routes/index');
 var itemsRouter = require('./routes/items');
 
 var app = express();
 
+// create application/json parser
+app.use(bodyParser.json());
+app.use(cors());
 app.use(logger('dev'));
-app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
