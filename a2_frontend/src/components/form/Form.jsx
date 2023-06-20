@@ -32,7 +32,6 @@ export default function Form() {
         const price = document.getElementById("price").value;
         const image = document.getElementById("image").value;
         const item = {
-            uuid: inventory.editItem.uuid,
             name: name,
             price: price,
             description: description,
@@ -40,6 +39,7 @@ export default function Form() {
         }
         document.getElementById("item_form").reset();
         if (inventory.editItem) {
+            item.uuid = inventory.editItem.uuid;
             dispatch(updateItemAsync(item));
         } else {
             dispatch(addItemAsync(item));
