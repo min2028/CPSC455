@@ -51,13 +51,13 @@ const removeItem = async (id) => {
 }
 
 const updateItem = async (item) => {
+    console.log("edited item", item)
     const itemData = {
-        name: item.item.name,
-        description: item.item.description,
-        price: item.item.price,
-        image: item.item.image
+        name: item.name,
+        description: item.description,
+        price: item.price,
+        image: item.image
     }
-    // console.log(itemData)
     const config = {
         headers: {
             "Content-Type": "application/json"
@@ -65,7 +65,7 @@ const updateItem = async (item) => {
     }
     try {
         const response = await axios.patch(
-            `${process.env.REACT_APP_API_URL}/items/${item.item.id}`,
+            `${process.env.REACT_APP_API_URL}/items/${item.uuid}`,
             itemData,
             config
             );

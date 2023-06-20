@@ -6,7 +6,6 @@ import { useState } from "react";
 import PopUpCard from "../popupcard/PopUpCard";
 import {useDispatch} from "react-redux";
 import {getItemsAsync} from "../../reducers/thunks";
-import Form from "../form/Form";
 // {
 //     uuid: 'cd90ce4c-1575-44bb-b9f0-f7c5d8e47169',
 //     name: 'Recycled Fresh Chicken',
@@ -50,7 +49,6 @@ export default function Inventory() {
     const [popup, setPopup] = useState(false);
     const [selectedItem, setSelectedItem] = useState(null);
     const dispatch = useDispatch();
-    const [edit, setEdit] = useState(false);
 
     useEffect(() => {
         setEmpty(inventory.items.length === 0);
@@ -61,8 +59,6 @@ export default function Inventory() {
         dispatch(getItemsAsync());
     }, []);
 
-    console.log(inventory);
-
     const handleCardItemPopUp = (item) => {
         console.log("Card Item clicked")
         setSelectedItem(item);
@@ -72,12 +68,6 @@ export default function Inventory() {
     const handleCardItemPopUpClose = () => {
         console.log("Card Item closed")
         setPopup(false);
-    }
-
-    const handleCardEditClick = (item) => {
-        console.log("Edit button clicked: ", item.uuid);
-        setSelectedItem(item);
-        setEdit(true);
     }
 
     return (
@@ -93,15 +83,11 @@ export default function Inventory() {
                                 inventory.items.map((item, index) => (
                                 <CardItem key={index} item={item} index={index}
                                           onClick={()=> handleCardItemPopUp(item)}
-                                          onEditClick={handleCardEditClick}
                                 />
                             ))}
                         </ul>
                         {popup && (
                             <PopUpCard trigger={popup} item={selectedItem} onClose={handleCardItemPopUpClose}/>
-                        )}
-                        {edit && (
-                            <Form item={selectedItem} onClose={() => setEdit(false)}/>
                         )}
                     </>
                 )}

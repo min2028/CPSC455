@@ -46,4 +46,27 @@ router.delete('/:id', function(req, res, next) {
     res.send(itemsList);
 });
 
+router.patch('/:id', function(req, res, next) {
+    console.log(req.params.id)
+    console.log(req.body)
+    const item = itemsList.items.find(item => item.uuid === req.params.id)
+    for (const prop in req.body) {
+        if (req.body.hasOwnProperty(prop)) {
+            item[prop] = req.body[prop];
+        }
+    }
+    // if (req.body.name) {
+    //     item.name = req.body.name
+    // }
+    // if (req.body.price) {
+    //     item.name = req.body.price
+    // }
+    // if (req.body.description) {
+    //     item.name = req.body.description
+    // }
+    // if (req.body.image) {
+    //     item.name = req.body.image
+    // }
+    res.send(item);
+});
 module.exports = router;

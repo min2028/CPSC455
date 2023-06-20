@@ -5,21 +5,24 @@ export const initialState = {
     items: [],
     status: 'idle',
     error: null,
+    editItem: null
 }
 
+// export const patchItem = (state, payload) => {
+//     console.log("item to be edited: ", payload);
+//     state.editItem = payload
+// };
 
 const itemSlice = createSlice({
     name: 'items',
     initialState,
     reducers: {
-        addItem: (state, action) => {
-            state.items.push(action.payload)
+        patchItem: (state, action) => {
+            console.log("item to be edited: ", action.payload);
+            state.editItem = action.payload;
         },
-        removeItem: (state, action) => {
-            state.items = state.items.filter((item, index) => index !== action.payload)
-        },
-        cleanItems: (state, action) => {
-            state.items = []
+        clearEditItem: (state) => {
+            state.editItem = null;
         }
     },
     extraReducers(builder) {
@@ -71,8 +74,10 @@ const itemSlice = createSlice({
             })
             .addCase(updateItemAsync.fulfilled, (state, action) => {
                 state.status = 'succeeded'
-                state.items = action.payload.items
+                const idx = state.items.findIndex((item) => item.uuid === action.payload.uuid)
+                state.items[idx] = action.payload
                 state.error = null
+                state.editItem = null
             })
             .addCase(updateItemAsync.rejected, (state, action) => {
                 state.status = 'failed'
@@ -81,4 +86,5 @@ const itemSlice = createSlice({
     },
 });
 
+export const {patchItem, clearEditItem} = itemSlice.actions;
 export default itemSlice.reducer;

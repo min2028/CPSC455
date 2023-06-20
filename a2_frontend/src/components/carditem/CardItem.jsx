@@ -1,10 +1,12 @@
 import React from 'react';
 import "./carditem.css"
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {removeItemAsync} from "../../reducers/thunks";
+import {patchItem} from "../../reducers/index";
 
 export default function CardItem(props) {
 
+    const inventory = useSelector((state) => state.inventory);
     const dispatch = useDispatch();
     function removeItemFromInventory(id, event) {
         console.log("Removing item from inventory: ", id);
@@ -18,8 +20,9 @@ export default function CardItem(props) {
     }
 
     const handleEditItemClick = (event) => {
+        // console.log("Editing item from inventory: ", props.item.uuid);
         event.stopPropagation();
-        props.onEditClick(props.item);
+        dispatch(patchItem(props.item));
     }
 
     return (
