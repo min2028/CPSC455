@@ -5,14 +5,12 @@ import {removeItemAsync} from "../../reducers/thunks";
 import {patchItem} from "../../reducers/index";
 
 export default function CardItem(props) {
-
-    const inventory = useSelector((state) => state.inventory);
     const dispatch = useDispatch();
-    function removeItemFromInventory(id, event) {
-        console.log("Removing item from inventory: ", id);
+    function removeItemFromInventory(item, event) {
+        console.log("Removing item from inventory: ", item._id);
         // To stop the popup from opening when clicking on remove button
         event.stopPropagation();
-        dispatch(removeItemAsync(id));
+        dispatch(removeItemAsync(item._id));
     }
 
     const handleCardItemPopUp = () => {
@@ -31,8 +29,9 @@ export default function CardItem(props) {
                 <img src={props.item.image} alt={props.item.name}/>
                 <div className="card_content">
                     <h2>{props.item.name}</h2>
+                    <h3>By: {props.item.owner_info.username}</h3>
                     <button onClick={(event) => handleEditItemClick(event)}>Edit</button>
-                    <button onClick={(event) => removeItemFromInventory(props.item.uuid, event)}>Remove</button>
+                    <button onClick={(event) => removeItemFromInventory(props.item, event)}>Remove</button>
                 </div>
             </li>
         </>
