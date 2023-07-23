@@ -33,7 +33,7 @@ const itemSlice = createSlice({
             })
             .addCase(getItemsAsync.fulfilled, (state, action) => {
                 state.status = 'succeeded'
-                state.items = action.payload.items
+                state.items = action.payload
                 state.error = null
             })
             .addCase(getItemsAsync.rejected, (state, action) => {
@@ -47,7 +47,7 @@ const itemSlice = createSlice({
             .addCase(addItemAsync.fulfilled, (state, action) => {
                 state.status = 'succeeded';
                 // console.log(action.payload)
-                state.items = [...state.items ,action.payload];
+                state.items = [...state.items, action.payload];
                 state.error = null
             })
             .addCase(addItemAsync.rejected, (state, action) => {
@@ -61,7 +61,7 @@ const itemSlice = createSlice({
             .addCase(removeItemAsync.fulfilled, (state, action) => {
                 state.status = 'succeeded'
                 // console.log(action.payload.items)
-                state.items = action.payload.items
+                state.items = state.items.filter((item) => item._id !== action.payload._id)
                 state.error = null
             })
             .addCase(removeItemAsync.rejected, (state, action) => {
@@ -74,7 +74,7 @@ const itemSlice = createSlice({
             })
             .addCase(updateItemAsync.fulfilled, (state, action) => {
                 state.status = 'succeeded'
-                const idx = state.items.findIndex((item) => item.uuid === action.payload.uuid)
+                const idx = state.items.findIndex((item) => item._id === action.payload._id)
                 state.items[idx] = action.payload
                 state.error = null
                 state.editItem = null

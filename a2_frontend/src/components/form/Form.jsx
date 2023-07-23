@@ -39,7 +39,7 @@ export default function Form() {
         }
         document.getElementById("item_form").reset();
         if (inventory.editItem) {
-            item.uuid = inventory.editItem.uuid;
+            item._id = inventory.editItem._id;
             dispatch(updateItemAsync(item));
         } else {
             dispatch(addItemAsync(item));

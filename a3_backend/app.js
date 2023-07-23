@@ -5,6 +5,10 @@ var logger = require('morgan');
 const cors = require('cors');
 var bodyParser = require('body-parser')
 
+// Don't forget to require the database config file YOU POTATO.
+//----------------------------------------//
+require('./config/database');
+
 var indexRouter = require('./routes/index');
 var itemsRouter = require('./routes/items');
 

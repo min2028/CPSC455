@@ -65,7 +65,7 @@ const updateItem = async (item) => {
     }
     try {
         const response = await axios.patch(
-            `${process.env.REACT_APP_API_URL}/items/${item.uuid}`,
+            `${process.env.REACT_APP_API_URL}/items/${item._id}`,
             itemData,
             config
             );
