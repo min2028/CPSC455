@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "install-server": "cd a3_backend && npm install",
-    "start-server": "cd a3_backend && node app.js",
+    "start-server": "cd a3_backend && node a3_backend/bin/www",
     "install-client": "cd a2_frontend && npm install",
     "build-client": "cd a2_frontend && npm run build",
     "start-client": "cd a2_frontend && npm start"
