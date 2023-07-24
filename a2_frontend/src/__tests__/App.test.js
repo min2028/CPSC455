@@ -55,21 +55,18 @@ test('Renders CardItem with correct content', async () => {
                 return state;
         }
     };
-    // Create a mocked Redux store with an initial state
     const store = configureStore({
         reducer: {
             inventory: inventoryReducer,
         },
     });
 
-    // Render the CardItem component with the mocked store
     await waitFor(() => render(
         <Provider store={store}>
             <CardItem item={mockItem}/>
         </Provider>
     ));
 
-    // Assert that the CardItem content is rendered correctly
     expect(screen.getByText('Test Item')).toBeInTheDocument();
     expect(screen.getByText('By: testuser')).toBeInTheDocument();
     expect(screen.getByAltText('Test Item')).toBeInTheDocument();
