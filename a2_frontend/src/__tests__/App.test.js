@@ -10,14 +10,14 @@ import {Provider} from "react-redux";
 jest.mock('axios');
 
 
-test("Renders Storage", () => {
-    renderWithRedux(<Inventory/>);
+test("Renders Storage", async () => {
+    await renderWithRedux(<Inventory/>);
     const storage = screen.getByText("Storage");
     expect(storage).toBeInTheDocument();
     return Promise.resolve();
 })
 
-test("Displays 'empty_text' when there are no items in the inventory", () => {
+test("Displays 'empty_text' when there are no items in the inventory", async () => {
     // Mock the Redux store with empty inventory
     const inventoryReducer = (state = {items: []}, action) => {
         switch (action.type) {
@@ -31,13 +31,12 @@ test("Displays 'empty_text' when there are no items in the inventory", () => {
             inventory: inventoryReducer,
         },
     });
-    renderWithRedux(<Inventory/>, {store: mockStore});
+    await renderWithRedux(<Inventory/>, {store: mockStore});
 
     const emptyText = screen.getByText("There are no items in the storage.");
     expect(emptyText).toBeInTheDocument();
-    return Promise.resolve();
 });
-test('Renders CardItem with correct content', () => {
+test('Renders CardItem with correct content', async () => {
     const mockItem = {
         _id: '12345',
         name: 'Test Item',
@@ -64,7 +63,7 @@ test('Renders CardItem with correct content', () => {
     });
 
     // Render the CardItem component with the mocked store
-    render(
+    await render(
         <Provider store={store}>
             <CardItem item={mockItem}/>
         </Provider>
@@ -74,8 +73,6 @@ test('Renders CardItem with correct content', () => {
     expect(screen.getByText('Test Item')).toBeInTheDocument();
     expect(screen.getByText('By: testuser')).toBeInTheDocument();
     expect(screen.getByAltText('Test Item')).toBeInTheDocument();
-    return Promise.resolve();
-
 });
 
 //
