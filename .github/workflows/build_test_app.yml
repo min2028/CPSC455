@@ -36,6 +36,10 @@ jobs:
       - name: Start backend server
         run: npm run start-server
 
+      - name: Debug MongoDB Configuration
+        run: |
+          echo "MongoDB URI: ${{ secrets.MONGODB_URI }}"
+
       # Step 3: Install frontend dependencies
       - name: Install frontend dependencies
         run: npm run install-client
