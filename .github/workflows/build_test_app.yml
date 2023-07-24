@@ -17,6 +17,8 @@ jobs:
     strategy:
       matrix:
         node-version: [ 19.x, 20.x]
+    env:
+      MONGODB_URI: ${{ secrets.MONGODB_URI }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
