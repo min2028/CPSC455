@@ -36,11 +36,7 @@ jobs:
 
       # Step 2: Start the backend server
       - name: Start backend server
-        run: npm run start-server
-
-      - name: Debug MongoDB Configuration
-        run: |
-          echo "MongoDB URI: ${{ secrets.MONGODB_URI }}"
+        run: timeout 30s npm run start-server
 
       # Step 3: Install frontend dependencies
       - name: Install frontend dependencies
