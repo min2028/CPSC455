@@ -16,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [ 18.x, 19.x, 20.x]
+        node-version: [ 19.x, 20.x]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -28,16 +28,22 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       # Install backend dependencies and start the backend server
-      - name: Start backend server
-        run: |
-          cd a3_backend
-          npm install
-          node app.js
+      # Step 1: Install backend dependencies
+      - name: Install backend dependencies
+        run: npm run install-server
 
-      # Install frontend dependencies and build the frontend
-      - name: Build and start frontend
-        run: |
-          cd a2_frontend
-          npm install
-          npm run build --if-present
-          npm run test
+      # Step 2: Start the backend server
+      - name: Start backend server
+        run: npm run start-server
+
+      # Step 3: Install frontend dependencies
+      - name: Install frontend dependencies
+        run: npm run install-client
+
+      # Step 4: Build the frontend
+      - name: Build frontend
+        run: npm run build-client
+
+      # Step 5: Test the frontend
+      - name: Test frontend
+        run: npm run test-client
