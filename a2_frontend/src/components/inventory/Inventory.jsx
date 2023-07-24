@@ -21,7 +21,7 @@ export default function Inventory() {
 
     useEffect(() => {
         dispatch(getItemsAsync());
-    });
+    }, []);
 
     const handleCardItemPopUp = (item) => {
         console.log("Card Item clicked")
