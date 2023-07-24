@@ -14,9 +14,9 @@ export default function Inventory() {
     const [selectedItem, setSelectedItem] = useState(null);
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        setEmpty(inventory.items.length === 0);
-    }, [inventory.items.length]);
+    // useEffect(() => {
+    //     setEmpty(inventory.items.length === 0);
+    // }, [inventory.items.length]);
 
 
     useEffect(() => {
