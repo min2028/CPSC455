@@ -14,6 +14,7 @@ test("Renders Storage", () => {
     renderWithRedux(<Inventory/>);
     const storage = screen.getByText("Storage");
     expect(storage).toBeInTheDocument();
+    return Promise.resolve();
 })
 
 test("Displays 'empty_text' when there are no items in the inventory", () => {
@@ -34,6 +35,7 @@ test("Displays 'empty_text' when there are no items in the inventory", () => {
 
     const emptyText = screen.getByText("There are no items in the storage.");
     expect(emptyText).toBeInTheDocument();
+    return Promise.resolve();
 });
 test('Renders CardItem with correct content', () => {
     const mockItem = {
@@ -72,6 +74,8 @@ test('Renders CardItem with correct content', () => {
     expect(screen.getByText('Test Item')).toBeInTheDocument();
     expect(screen.getByText('By: testuser')).toBeInTheDocument();
     expect(screen.getByAltText('Test Item')).toBeInTheDocument();
+    return Promise.resolve();
+
 });
 
 //
