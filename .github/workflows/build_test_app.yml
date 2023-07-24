@@ -17,6 +17,8 @@ jobs:
     strategy:
       matrix:
         node-version: [ 19.x, 20.x]
+    env:
+      MONGODB_URI: ${{ secrets.MONGODB_URI }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -31,10 +33,10 @@ jobs:
       # Step 1: Install backend dependencies
       - name: Install backend dependencies
         run: npm run install-server
-
-      # Step 2: Start the backend server
-      - name: Start backend server
-        run: npm run start-server
+#
+#      # Step 2: Start the backend server
+#      - name: Start backend server
+#        run: timeout 30s npm run start-server
 
       # Step 3: Install frontend dependencies
       - name: Install frontend dependencies
