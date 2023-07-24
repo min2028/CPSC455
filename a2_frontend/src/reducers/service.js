@@ -5,7 +5,6 @@ const getItems = async () => {
         const response = await axios.get(`${process.env.REACT_APP_API_URL}/items`);
         return response.data;
     } catch (err) {
-        console.log(err.message)
         return err.message();
     }
 }
@@ -31,7 +30,6 @@ const addItem = async (item) => {
             );
         return response.data;
     } catch (err) {
-        console.log(err.message)
         return err.message();
     }
 }
@@ -45,7 +43,6 @@ const removeItem = async (id) => {
         );
         return response.data;
     } catch (err) {
-        console.log(err.message)
         return err.message();
     }
 }
@@ -71,7 +68,6 @@ const updateItem = async (item) => {
             );
         return response.data;
     } catch (err) {
-        console.log(err.message)
         return err.message();
     }
 }

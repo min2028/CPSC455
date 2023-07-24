@@ -1,5 +1,5 @@
 import React from 'react';
-import {fireEvent, render, screen} from '@testing-library/react';
+import {fireEvent, render, screen, waitFor} from '@testing-library/react';
 import Inventory from '../components/inventory/Inventory';
 import '@testing-library/jest-dom/extend-expect'
 import {renderWithRedux} from "../setupTests";
@@ -11,7 +11,7 @@ jest.mock('axios');
 
 
 test("Renders Storage", async () => {
-    await renderWithRedux(<Inventory/>);
+    await waitFor(() => renderWithRedux(<Inventory />));
     const storage = screen.getByText("Storage");
     expect(storage).toBeInTheDocument();
     return Promise.resolve();
@@ -31,7 +31,7 @@ test("Displays 'empty_text' when there are no items in the inventory", async () 
             inventory: inventoryReducer,
         },
     });
-    await renderWithRedux(<Inventory/>, {store: mockStore});
+    await waitFor(() =>  renderWithRedux(<Inventory/>, {store: mockStore}));
 
     const emptyText = screen.getByText("There are no items in the storage.");
     expect(emptyText).toBeInTheDocument();
@@ -63,11 +63,11 @@ test('Renders CardItem with correct content', async () => {
     });
 
     // Render the CardItem component with the mocked store
-    await render(
+    await waitFor(() => render(
         <Provider store={store}>
             <CardItem item={mockItem}/>
         </Provider>
-    );
+    ));
 
     // Assert that the CardItem content is rendered correctly
     expect(screen.getByText('Test Item')).toBeInTheDocument();
