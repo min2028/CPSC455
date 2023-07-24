@@ -76,9 +76,11 @@ const updateItem = async (item) => {
     }
 }
 
-export default {
+
+const service = {
     getItems,
     addItem,
     removeItem,
     updateItem,
-}
+};
+export default service;
