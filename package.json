@@ -8,7 +8,8 @@
     "start-server": "cd a3_backend && node ./bin/www",
     "install-client": "cd a2_frontend && npm install",
     "build-client": "cd a2_frontend && npm run build",
-    "start-client": "cd a2_frontend && npm start"
+    "start-client": "cd a2_frontend && npm start",
+    "test-client": "cd a2_frontend && npm test"
   },
   "keywords": [],
   "author": "",

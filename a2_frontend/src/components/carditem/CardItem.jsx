@@ -1,6 +1,6 @@
 import React from 'react';
 import "./carditem.css"
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {removeItemAsync} from "../../reducers/thunks";
 import {patchItem} from "../../reducers/index";
 
