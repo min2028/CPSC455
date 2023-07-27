@@ -16,7 +16,7 @@ export default function Inventory() {
 
     useEffect(() => {
         setEmpty(inventory.items.length === 0);
-        //testing
+        //present testing
     }, [inventory.items]);
 
 
